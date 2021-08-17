@@ -13,7 +13,7 @@ class Misc(commands.Cog):
   
   @commands.Cog.listener()
   async def on_guild_join(self,guild):
-    Database.new_server(guild.id)
+    Database.new_server(str(guild.id))
     print(guild.id)
 
   @commands.command(pass_context=True)

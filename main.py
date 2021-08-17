@@ -3,7 +3,6 @@ import os
 from replit import db
 import discord
 from discord.ext import commands
-
 intents = discord.Intents().all()
 bot = commands.Bot(command_prefix = 'k',case_insensitive =True,intents=intents)
 bot.remove_command('help')
@@ -40,7 +39,7 @@ async def reload(ctx,extension):
 
 
 @bot.command()
-async def act(ctx, member: discord.Member,*, message=None):
+async def act(ctx, member: commands.MemberConverter,*, message=None):
   if message == None:
     await ctx.send(f'Please provide a message with that!')
     return

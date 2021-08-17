@@ -12,7 +12,7 @@ class Quote(commands.Cog):
   async def quote(self,ctx,name:str,*,quote=None):
     if isinstance(ctx.channel, discord.DMChannel):
       return None
-    serverId = ctx.guild.id
+    serverId = str(ctx.guild.id)
     data = Database.get_data(serverId,"names")
     length = len(data) if data else 0
     if not quote:
@@ -34,7 +34,7 @@ class Quote(commands.Cog):
   async def delete(self,ctx,name:str):
     if isinstance(ctx.channel, discord.DMChannel):
       return None
-    serverId = ctx.guild.id
+    serverId = str(ctx.guild.id)
     data = Database.get_data(serverId,"names")
     if data:
       length = len(data)
@@ -51,7 +51,7 @@ class Quote(commands.Cog):
   async def mute(self,ctx):
     if isinstance(ctx.channel, discord.DMChannel):
       return None
-    serverId = ctx.guild.id
+    serverId = str(ctx.guild.id)
     data = Database.get_data(serverId,'mute')
     if data:
       await ctx.send('already muted')
@@ -62,7 +62,7 @@ class Quote(commands.Cog):
   async def unmute(self,ctx):
     if isinstance(ctx.channel, discord.DMChannel):
       return None
-    serverId = ctx.guild.id
+    serverId = str(ctx.guild.id)
     data = Database.get_data(serverId,'mute')
     if not data:
       await ctx.send('already unmuted')
@@ -84,7 +84,7 @@ class Quote(commands.Cog):
         await ctx.send("Please use command in a server or search by <serverId> (needs dev opts on) as second argument to use in dms")
         return None
     else:
-      serverId = ctx.guild.id
+      serverId = str(ctx.guild.id)
       mute = Database.get_data(serverId,'mute')
       data = Database.get_data(serverId,"names")
     if data:

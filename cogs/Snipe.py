@@ -6,7 +6,6 @@ import discord
 from discord.ext import commands
 
 
-
 class Snipe(commands.Cog):
   def __init__(self,bot):
     self.bot = bot
@@ -26,7 +25,7 @@ class Snipe(commands.Cog):
         author = message.author
         pfp = author.avatar_url
         data = [str(pfp),str(author),tstamp,arg,"message"]
-        serverId = message.guild.id
+        serverId = str(message.guild.id)
         Database.update(serverId,"captured",data)
 
   @commands.Cog.listener()
@@ -34,19 +33,19 @@ class Snipe(commands.Cog):
     if isinstance(before.channel, discord.DMChannel):
       return None
     msg = before.content
-    serverId = before.guild.id
+    serverId = str(before.guild.id)
     if not msg:
       return
     if len(msg) > 100:
       msg = msg[:100]
     if not before.author.bot and before.author.id !=278646990777221120:
-        if isinstance(msg, str):
-          tstamp = str(before.created_at)
-          author = before.author
-          pfp = author.avatar_url
-          #data1 = "{} {} {} {}".format(pfp,author,tstamp,msg)
-          data = [str(pfp),str(author),tstamp,msg,"edit"]
-          Database.update(serverId,"captured",data)
+      if isinstance(msg, str):
+        tstamp = str(before.created_at)
+        author = before.author
+        pfp = author.avatar_url
+        #data1 = "{} {} {} {}".format(pfp,author,tstamp,msg)
+        data = [str(pfp),str(author),tstamp,msg,"edit"]
+        Database.update(serverId,"captured",data)
 
   @commands.command(pass_context = True)
   async def snipe(self,ctx,*,arg=None):
@@ -62,7 +61,7 @@ class Snipe(commands.Cog):
         await ctx.send("Please use command in  a server or search by <serverId>(needs dev opts on) as second argument to use in dms")
         return None
     else:
-      serverId = ctx.guild.id
+      serverId = str(ctx.guild.id)
       data = Database.get_data(serverId,"captured")
       if not data: 
         await ctx.send("Nothing to snipe")
