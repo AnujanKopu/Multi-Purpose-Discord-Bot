@@ -10,4 +10,4 @@ To host this simply:
 1) Fork the replit/github repo. 
 2) Create and change the environment token variable to your own discord token.
 3) Turn on intents on the discord developer portal.
-4) Setup your own database if you're using another service to host the bot or use the bot's simple key-value database provided by replit for free.
+4) If you're using your pc or another service to host the bot you need to setup your own database -- the bot's simple key-value database provided by replit for free.
