@@ -2,7 +2,7 @@
 
 This bot is hosted on [replit](https://replit.com/@Anuj1/Discord-Bot#main.py).
 
-Automates simple processes like saving deleted messages,editing messages,creating special quotes,shortening links and set reminders for certain days. 
+Automates simple processes like saving deleted messages and edited messages,creating special quotes, and shortening links. 
 
 🛠️ Hosting
 
